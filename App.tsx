@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import Papa from 'papaparse';
 import { SearchBar } from './components/SearchBar';
 import { ResultCard } from './components/ResultCard';
