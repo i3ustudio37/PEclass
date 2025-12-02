@@ -1,0 +1,5 @@
+{
+  "name": "體育成績查詢系統",
+  "description": "一個快速查詢體育課成績的行動優先網頁應用程式，支援學號搜尋與詳細成績顯示。",
+  "requestFramePermissions": []
+}
