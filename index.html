@@ -5,7 +5,7 @@
     <link rel="icon" type="image/svg+xml" href="https://picsum.photos/32/32" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>體育成績查詢系統</title>
-    <!-- 使用 Tailwind CDN -->
+    <!-- 使用 Tailwind CDN (方便快速樣式調整，正式專案建議改用 PostCSS 安裝) -->
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
       tailwind.config = {
@@ -35,7 +35,6 @@
 </head>
   <body class="bg-gray-50 min-h-screen text-gray-800">
     <div id="root"></div>
-    <!-- 這一行是關鍵，讓 Vite 知道從哪裡開始執行 -->
     <script type="module" src="/index.tsx"></script>
   </body>
 </html>
