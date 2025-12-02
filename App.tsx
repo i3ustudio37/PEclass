@@ -12,10 +12,12 @@ const App: React.FC = () => {
   const [searchResult, setSearchResult] = useState<StudentRecord | null>(null);
   const [hasSearched, setHasSearched] = useState(false);
   const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    // Parse CSV data on component mount
+    // Parse CSV data from URL on component mount
     Papa.parse(CSV_DATA, {
+      download: true, // Enable fetching from URL
       header: true,
       skipEmptyLines: true,
       complete: (results: ParseResult) => {
@@ -26,8 +28,9 @@ const App: React.FC = () => {
         setData(cleanData);
         setLoading(false);
       },
-      error: (error: any) => {
-        console.error('CSV Parsing Error:', error);
+      error: (err: any) => {
+        console.error('CSV Parsing Error:', err);
+        setError('無法讀取成績資料，請稍後再試。若問題持續發生，請確認 Google 試算表已正確發布。');
         setLoading(false);
       }
     });
@@ -60,7 +63,11 @@ const App: React.FC = () => {
         {loading ? (
            <div className="flex flex-col items-center justify-center py-20 text-gray-500">
              <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-primary mb-4"></div>
-             <p>資料載入中...</p>
+             <p>成績資料同步中...</p>
+           </div>
+        ) : error ? (
+           <div className="text-center p-8 bg-red-50 rounded-2xl border border-red-100 text-red-600">
+             <p>{error}</p>
            </div>
         ) : (
           <>
